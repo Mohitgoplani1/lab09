@@ -1,10 +1,10 @@
 <?php
-
- use App\Http\Controllers\ArticlesController;
-use App\Http\Controllers\HomeController;
-//use App\Http\Controllers\PersonController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,57 +15,78 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+require __DIR__.'/auth.php';
+Route::get('/admin', [
+    AdminController::class, 'index'
+])->middleware('auth')->name('admin');
+Route::get('/admin/users', [
+    AdminUsersController::class, 'index'
+])->middleware('auth')->name('admin-users');
+Route::get('/admin/users/create', [
+    AdminUsersController::class, 'create'
+])->middleware('admin')->name('admin-users-create');
+Route::post('/admin/users/create', [
+    AdminUsersController::class, 'store'
+])->middleware('admin')->name('admin-users-create');
 
-// Route::get('/', function () {
-//     return "<h1 >Hello from Aditya </h1>";
-// });
-// Route::get('/aboutus', function () {
-//     return view('aboutus');
-// });
-// Route::view('/aboutus','aboutus',[
-//     'name'=> 'Aditya',
-// ]);
-// Route::get('/', function (){
-//     return view('welcome');
-// });
-// Route::get('/person/{name}', function ($name) {
-//     return "The name is $name";
-// })->name('person.index');
-// Route::get(
-//     '/',
-//     [HomeController::class, 'index']
-// )->name('profile');
+Route::get('/admin/users/{id}/edit', [
+    AdminUsersController::class, 'edit'
+])->middleware('admin')->name('admin-users-edit');
 
-// Route::get(
-//     '/contact',
-//     [HomeController::class, 'contact']
-// )->name('contact');
-// Route::post(
-//     '/contact',
-//     [HomeController::class, 'create']
-// )->name('contact.create');
-// Route::get(
-//     '/person/{name?}',
-//     [PersonController::class, 'index']
-// )->name('person.index');
-// Route::resources([
-//     'person'=> PersonController::class
-// ]);
+Route::patch('/admin/users/{id}/edit', [
+    AdminUsersController::class, 'update'
+])->middleware('admin')->name('admin-users-edit');
 
-// Route::resource('person', PersonController::class);
-// Route::resource('person', PersonController::class)->only(['index','create']);
-// Route::resource('person', PersonController::class)->except(['create']);
-// Route::resource('person', PersonController::class)
-//     ->only(['index','create'])
-//     ->names([
-//         'index' => 'person.superindex',
-//         'create' => 'person.supercreate'
-//     ]);
 
-    Route::get('/', [
-        HomeController::class, 'index'
-    ]);
+Route::get('/admin/categories', [
+    CategoryController::class, 'index'
+])->middleware('auth')->name('admin-categories');
 
-    Route::get('/articles', [
-        ArticlesController::class, 'index'
-    ]);
+Route::get('/admin/categories/create', [
+    CategoryController::class, 'create'
+])->middleware('auth')->name('admin-categories-create');
+
+Route::post('/admin/categories/create', [
+    CategoryController::class, 'store'
+])->middleware('auth')->name('admin-categories-create');
+
+Route::get('/admin/categories/{id}/edit', [
+    CategoryController::class, 'edit'
+])->middleware('auth')->name('admin-categories-edit');
+
+Route::patch('/admin/categories/{id}/edit', [
+    CategoryController::class, 'update'
+])->middleware('auth')->name('admin-categories-edit');
+// posts
+
+
+Route::get('/admin/posts', [
+    PostController::class, 'index'
+])->middleware('auth')->name('admin-posts');
+
+Route::get('/admin/posts/create', [
+    PostController::class, 'create'
+])->middleware('auth')->name('admin-posts-create');
+
+Route::post('/admin/posts/create', [
+    PostController::class, 'store'
+])->middleware('auth')->name('admin-posts-create');
+
+Route::get('/admin/posts/{id}/edit', [
+    PostController::class, 'edit'
+])->middleware('auth')->name('admin-posts-edit');
+
+Route::patch('/admin/posts/{id}/edit', [
+    PostController::class, 'update'
+])->middleware('auth')->name('admin-posts-edit');

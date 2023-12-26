@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c491b8531eec05ba41a11d9276a5749",
+    "content-hash": "9930c871f6a682015395d67bba84d78d",
     "packages": [
         {
             "name": "brick/math",
@@ -2314,6 +2314,67 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
+        },
+        {
+            "name": "orkhanahmadov/laravel-accept-language-middleware",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orkhanahmadov/laravel-accept-language-middleware.git",
+                "reference": "33b6ace2da0e82a14b7a480fab1ff7c65ef2526e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orkhanahmadov/laravel-accept-language-middleware/zipball/33b6ace2da0e82a14b7a480fab1ff7c65ef2526e",
+                "reference": "33b6ace2da0e82a14b7a480fab1ff7c65ef2526e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.0|^9.0|^10.0",
+                "illuminate/http": "^8.0|^9.0|^10.0",
+                "illuminate/support": "^8.0|^9.0|^10.0",
+                "php": "^8.0.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0|^7.0|^8.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Orkhanahmadov\\LaravelAcceptLanguageMiddleware\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Orkhan Ahmadov",
+                    "email": "ahmadov90@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel middleware for setting application locale based on HTTP Accept-Language header",
+            "homepage": "https://github.com/orkhanahmadov/laravel-accept-language-middleware",
+            "keywords": [
+                "accept-language",
+                "laravel",
+                "laravel middleware",
+                "orkhanahmadov"
+            ],
+            "support": {
+                "issues": "https://github.com/orkhanahmadov/laravel-accept-language-middleware/issues",
+                "source": "https://github.com/orkhanahmadov/laravel-accept-language-middleware/tree/2.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/orkhanahmadov",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-02-05T18:03:44+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -5818,6 +5879,68 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "laravel/breeze",
+            "version": "v1.26.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "60f339c38098bc5adbf8614bf5d89b77647a06c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/60f339c38098bc5adbf8614bf5d89b77647a06c5",
+                "reference": "60f339c38098bc5adbf8614bf5d89b77647a06c5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^10.17",
+                "illuminate/filesystem": "^10.17",
+                "illuminate/support": "^10.17",
+                "illuminate/validation": "^10.17",
+                "php": "^8.1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0",
+                "phpstan/phpstan": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Breeze\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+            "keywords": [
+                "auth",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/breeze/issues",
+                "source": "https://github.com/laravel/breeze"
+            },
+            "time": "2023-11-24T14:41:28+00:00"
         },
         {
             "name": "laravel/pint",
